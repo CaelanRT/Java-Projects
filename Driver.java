@@ -23,21 +23,38 @@ public class Driver {
             
             if (input.hasNextInt()) {
                 menuChoice = input.nextInt();
+                input.nextLine();
             } else {
                 System.out.println("Invalid input.\n");
                 System.out.println("Please select from the following options:\n 1 - create a book\n 2 - take out a book\n 3 - return a book\n 4 - print a receipt");
             }
-            input.nextLine();
+            
 
-
-
+            //this is the main menu of the program
             switch (menuChoice) {
                 case 1:
-                    System.out.println("Creating book");
+                    System.out.println("Creating a book:");
+                    System.out.println("Title:");
+                    String bookTitle = input.nextLine();
+                    System.out.println("Author:");
+                    String bookAuthor = input.nextLine();
+                    System.out.println("Description:");
+                    String bookDescription = input.nextLine();
+                    System.out.println("Publish Date:");
+                    String bookPublishDate = input.nextLine();
+                    boolean bookInStock = true;
+
+                    Book book1 = new Book(bookTitle, bookAuthor, bookDescription, bookPublishDate, bookInStock);
                     break;
                 
                 case 2:
-                    System.out.println("taking out a book");
+                    System.out.println("Taking out a book:");
+                    System.out.println("What book would you like to take out?");
+                    String bookChoice = input.nextLine();
+                    
+                    //need to fix the block scope variables here
+                    //String bookChoiceTitle = book1.getTitle();
+
                     break;
 
                 case 3:
@@ -46,9 +63,10 @@ public class Driver {
 
                 case 4:
                     System.out.println("printing a receipt");
-
+                    break;
                 default:
-                    System.out.println("Not a valid input, input a number");
+                    System.out.println("Not a valid input, input a number between 1 and 4.");
+                    break;
             }
 
             System.out.println("Do you wish to quit? If so, type Y.");

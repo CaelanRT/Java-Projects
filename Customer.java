@@ -4,7 +4,7 @@ public class Customer {
     //Instance Variables
     private String name;
     private String address;
-    private int numBooksBorrowed;
+    private int numBooksBorrowed = 0;
     //private ArrayList<Book> listBooksBorrowed = new ArrayList<Book>();
 
     //constructors
