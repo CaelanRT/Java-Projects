@@ -8,6 +8,8 @@ public class Driver {
         Scanner input = new Scanner(System.in);
         String userQuit = "N";
         int menuChoice = 0;
+        ArrayList<Book> books = new ArrayList<Book>();
+        //declare an ArrayList of books and add your book when its created to this list, itll keep through the scope
 
         System.out.println("Welcome to the Library\n");
         System.out.println("What is your name?\n");
@@ -45,15 +47,28 @@ public class Driver {
                     boolean bookInStock = true;
 
                     Book book1 = new Book(bookTitle, bookAuthor, bookDescription, bookPublishDate, bookInStock);
+                    books.add(book1);
+                    System.out.printf("Your book %s was written by %s. It is about %s and was published %s. \n", bookTitle, bookAuthor, bookDescription, bookPublishDate);
                     break;
-                
+                    
+                //this case takes out a book
                 case 2:
                     System.out.println("Taking out a book:");
                     System.out.println("What book would you like to take out?");
                     String bookChoice = input.nextLine();
-                    
-                    //need to fix the block scope variables here
-                    //String bookChoiceTitle = book1.getTitle();
+
+                    //this iterates over the array list and compares the users input to find valid books in the list and to see if they are in stock
+                    for (int i = 0; i < books.size(); ++i) {
+                        String listBookTitle = (books.get(i)).getTitle();
+                        if (bookChoice.equals(listBookTitle) && (books.get(i).getInStock()) == true) {
+                            System.out.printf("You wanted %s, that book is in stock.\n", listBookTitle);
+                            books.get(i).setInStock(false);
+                        } else if (bookChoice.equals(listBookTitle) && (books.get(i).getInStock()) == false){
+                            System.out.printf("You wanted %s, that book is not in stock.\n", listBookTitle);
+                        } else {
+                            System.out.println("That is not a valid title in our library.");
+                        }
+                    }
 
                     break;
 
