@@ -40,8 +40,8 @@ public class Customer {
         return numBooksBorrowed;
     }
 
-    public void setNumBooksBorrowed(int numBooksBorrowed) {
-        this.numBooksBorrowed = numBooksBorrowed;
+    public void setNumBooksBorrowed() {
+        this.numBooksBorrowed = this.listBooksBorrowed.size();
     }
 
     public ArrayList<Book> getListBooksBorrowed() {

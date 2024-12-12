@@ -11,8 +11,8 @@ public class Driver {
         ArrayList<Book> books = new ArrayList<Book>();
         //declare an ArrayList of books and add your book when its created to this list, itll keep through the scope
 
-        System.out.println("Welcome to the Library\n");
-        System.out.println("What is your name?\n");
+        System.out.println("Welcome to the Library");
+        System.out.println("What is your name?");
         String userName = input.nextLine();
         Customer customer = new Customer();
         customer.setName(userName);
@@ -65,6 +65,7 @@ public class Driver {
                             customer.addListBooksBorrowed(books.get(i));
                             books.get(i).setInStock(false);
                             System.out.printf("You now have %s on loan.\n", listBookTitle);
+                            customer.setNumBooksBorrowed();
                         } else if (bookChoice.equals(listBookTitle) && (books.get(i).getInStock()) == false){
                             System.out.printf("You wanted %s, that book is not in stock.\n", listBookTitle);
                         } else {
@@ -75,11 +76,35 @@ public class Driver {
                     break;
 
                 case 3:
-                    System.out.println("returning a book");
+                    System.out.println("Returning a book");
+                    System.out.println("What book would you like to return?");
+                    String bookReturnChoice = input.nextLine();
+
+                    for (int i = 0; i < customer.getListBooksBorrowed().size(); ++i) {
+                        String returnBookTitle = ((customer.getListBooksBorrowed()).get(i).getTitle());
+                        if (bookReturnChoice.equals(returnBookTitle)) {
+                            System.out.printf("You wanted to return %s. We have added it back to our shelves.\n", bookReturnChoice);
+                            customer.getListBooksBorrowed().remove(i);
+                            customer.setNumBooksBorrowed();
+                            for (int j = 0; j < books.size(); ++j) {
+                                String returnBookListTitle = (books.get(i)).getTitle();
+                                if (bookReturnChoice.equals(returnBookListTitle)) {
+                                    books.get(i).setInStock(true);
+                                }
+                            }
+                            
+                        }
+                    }
                     break;
 
                 case 4:
-                    System.out.println("printing a receipt");
+                    System.out.println("Printing a receipt");
+                    System.out.printf("Name: %s\n", customer.getName());
+                    System.out.printf("Number of books borrowed: %d\n", customer.getNumBooksBorrowed());
+                    System.out.println("List of books borrowed:");
+                    for (int i = 0; i < customer.getListBooksBorrowed().size(); ++i) {
+                        System.out.println("- " + customer.getListBooksBorrowed().get(i).getTitle());
+                    }
                     break;
                 default:
                     System.out.println("Not a valid input, input a number between 1 and 4.");
