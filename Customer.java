@@ -5,7 +5,7 @@ public class Customer {
     private String name;
     private String address;
     private int numBooksBorrowed = 0;
-    //private ArrayList<Book> listBooksBorrowed = new ArrayList<Book>();
+    private ArrayList<Book> listBooksBorrowed = new ArrayList<Book>();
 
     //constructors
     public Customer() {
@@ -16,7 +16,7 @@ public class Customer {
         this.name = name;
         this.address = address;
         this.numBooksBorrowed = numBooksBorrowed;
-       // this.listBooksBorrowed = listBooksBorrowed;
+        this.listBooksBorrowed = listBooksBorrowed;
     }
 
     //Methods
@@ -44,13 +44,13 @@ public class Customer {
         this.numBooksBorrowed = numBooksBorrowed;
     }
 
-    // public ArrayList<Book> getListBooksBorrowed() {
-    //     return listBooksBorrowed;
-    // }
+    public ArrayList<Book> getListBooksBorrowed() {
+        return listBooksBorrowed;
+    }
 
     //haven't quite figured out how to add things to an array list that is private in this manner
-    // public void addListBooksBorrowed() {
-
-    // }
+    public void addListBooksBorrowed(Book book) {
+        this.listBooksBorrowed.add(book);
+    }
 
 }

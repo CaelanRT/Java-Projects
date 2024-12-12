@@ -50,7 +50,7 @@ public class Driver {
                     books.add(book1);
                     System.out.printf("Your book %s was written by %s. It is about %s and was published %s. \n", bookTitle, bookAuthor, bookDescription, bookPublishDate);
                     break;
-                    
+
                 //this case takes out a book
                 case 2:
                     System.out.println("Taking out a book:");
@@ -62,7 +62,9 @@ public class Driver {
                         String listBookTitle = (books.get(i)).getTitle();
                         if (bookChoice.equals(listBookTitle) && (books.get(i).getInStock()) == true) {
                             System.out.printf("You wanted %s, that book is in stock.\n", listBookTitle);
+                            customer.addListBooksBorrowed(books.get(i));
                             books.get(i).setInStock(false);
+                            System.out.printf("You now have %s on loan.\n", listBookTitle);
                         } else if (bookChoice.equals(listBookTitle) && (books.get(i).getInStock()) == false){
                             System.out.printf("You wanted %s, that book is not in stock.\n", listBookTitle);
                         } else {
