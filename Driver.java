@@ -80,21 +80,29 @@ public class Driver {
                     System.out.println("What book would you like to return?");
                     String bookReturnChoice = input.nextLine();
 
-                    for (int i = 0; i < customer.getListBooksBorrowed().size(); ++i) {
-                        String returnBookTitle = ((customer.getListBooksBorrowed()).get(i).getTitle());
-                        if (bookReturnChoice.equals(returnBookTitle)) {
-                            System.out.printf("You wanted to return %s. We have added it back to our shelves.\n", bookReturnChoice);
-                            customer.getListBooksBorrowed().remove(i);
-                            customer.setNumBooksBorrowed();
-                            for (int j = 0; j < books.size(); ++j) {
-                                String returnBookListTitle = (books.get(i)).getTitle();
-                                if (bookReturnChoice.equals(returnBookListTitle)) {
-                                    books.get(i).setInStock(true);
+                    if (customer.getListBooksBorrowed().size() >= 1) {
+                        for (int i = 0; i < customer.getListBooksBorrowed().size(); ++i) {
+                            String returnBookTitle = ((customer.getListBooksBorrowed()).get(i).getTitle());
+                            if (bookReturnChoice.equals(returnBookTitle)) {
+                                System.out.printf("You wanted to return %s. We have added it back to our shelves.\n", bookReturnChoice);
+                                customer.getListBooksBorrowed().remove(i);
+                                customer.setNumBooksBorrowed();
+                                for (int j = 0; j < books.size(); ++j) {
+                                    String returnBookListTitle = (books.get(i)).getTitle();
+                                    if (bookReturnChoice.equals(returnBookListTitle)) {
+                                        books.get(i).setInStock(true);
+                                    }
                                 }
+                                
                             }
                             
                         }
+                    } else {
+                        System.out.println("You don't have any books to return.");
                     }
+
+                    
+
                     break;
 
                 case 4:
