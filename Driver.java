@@ -100,9 +100,6 @@ public class Driver {
                     } else {
                         System.out.println("You don't have any books to return.");
                     }
-
-                    
-
                     break;
 
                 case 4:
@@ -122,9 +119,5 @@ public class Driver {
             System.out.println("Do you wish to quit? If so, type Y.");
             userQuit = input.nextLine().toUpperCase();
         }
-
-
-
-        
     }
 }

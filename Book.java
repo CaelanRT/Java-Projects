@@ -59,6 +59,7 @@ public class Book {
     public void setInStock(boolean inStock){
         this.inStock = inStock;
     }
+    
 
 
 }
